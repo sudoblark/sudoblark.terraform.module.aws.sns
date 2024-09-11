@@ -27,15 +27,15 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ env.REPO_GITHUB_TOKEN }}
 
-      - name: Setup git username
-        run: git config credential.https://github.com.username sudoblark-bot
-
       - name: terraform validate
         uses: dflook/terraform-validate@v1
         with:
           path: ${{ matrix.folder }}
+
         env:
           GITHUB_TOKEN: ${{ env.ORG_GITHUB_TOKEN }}
+          TERRAFORM_HTTP_CREDENTIALS: |
+            github.com/sudoblark=sudoblark-bot:${{ env.ORG_GITHUB_TOKEN }}
 
   linting:
     strategy:
@@ -70,12 +70,11 @@ jobs:
       - id: install-aws-cli
         uses: unfor19/install-aws-cli-action@v1
 
-      - name: Setup git username
-        run: git config credential.https://github.com.username sudoblark-bot
-
       - name: terraform plan
         uses: dflook/terraform-plan@v1
         with:
           path: ${{ matrix.folder }}
         env:
           GITHUB_TOKEN: ${{ env.ORG_GITHUB_TOKEN }}
+          TERRAFORM_HTTP_CREDENTIALS: |
+            github.com/sudoblark=sudoblark-bot:${{ env.ORG_GITHUB_TOKEN }}
