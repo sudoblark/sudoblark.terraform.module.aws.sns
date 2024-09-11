@@ -35,7 +35,7 @@ jobs:
   linting:
     strategy:
       matrix:
-        folder: ["./", "./examples_email_and_lambda"]
+        folder: ["./", "./examples/email_and_lambda"]
     name: Terraform lint for ${{ matrix.folder }}
     runs-on: ubuntu-20.04
     steps:
