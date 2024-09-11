@@ -83,9 +83,13 @@ No outputs.
 <!-- END_TF_DOCS -->
 
 ## Data structure
+```
+Data structure
+---------------
 A list of dictionaries, where each dictionary has the following attributes:
 
-### REQUIRED
+REQUIRED
+---------
 - suffix                : Suffix for the topic, will also be used as a unified index for Terraform resources.
 
 - iam_policy_statements : A list of dictionaries where each dictionary is an IAM statement defining topic policy permissions.
@@ -106,14 +110,15 @@ A list of dictionaries, where each dictionary has the following attributes:
 -- name                 : Friendly name for the endpoint, used for unique indexing in Terraform.
 -- protocol             : Determines the subscription type, permissible types are: email, lambda
 
-### Constraints
+Constraints
+---------
 - if endpoints.protocol == lambda then:
 -- endpoint must be ARN of a lambda function
 -- name must be name of a lambda function
 - if endpoints.protocol == email, then endpoint must be an email address
 
 - Only lambda and email endpoints.protocol values are supported
-
+```
 
 ## Examples
 See `examples` folder for an example setup.
