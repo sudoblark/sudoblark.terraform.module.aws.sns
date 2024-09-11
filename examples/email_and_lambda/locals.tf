@@ -14,7 +14,7 @@ locals {
           principals = [
             {
               type        = "AWS"
-              identifiers = "allowed-principal-role"
+              identifiers = ["allowed-principal-role"]
             }
           ]
         }
@@ -26,8 +26,9 @@ locals {
           protocol = "lambda"
         },
         {
-          name  = "example-email"
-          email = "hello@world.com"
+          name     = "example-email"
+          endpoint = "hello@world.com"
+          protocol = "email"
         },
       ]
     }
