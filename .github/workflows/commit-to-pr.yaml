@@ -31,6 +31,8 @@ jobs:
         uses: dflook/terraform-validate@v1
         with:
           path: ${{ matrix.folder }}
+        env:
+          GITHUB_TOKEN: ${{ env.ORG_GITHUB_TOKEN }}
 
   linting:
     strategy:
