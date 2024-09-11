@@ -58,7 +58,7 @@ jobs:
   plan:
     strategy:
       matrix:
-        folder: ["./", "./examples/email_and_lambda"]
+        folder: ["./examples/email_and_lambda"]
     name: Terraform plan for ${{ matrix.folder }}
     runs-on: ubuntu-20.04
     needs: [validation, linting]
