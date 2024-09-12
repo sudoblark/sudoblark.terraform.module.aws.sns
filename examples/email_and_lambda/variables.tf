@@ -11,5 +11,5 @@ variable "environment" {
 variable "application_name" {
   description = "Name of the application utilising the resource resource."
   type        = string
-  defauult    = "demo-app"
+  default     = "demo-app"
 }
