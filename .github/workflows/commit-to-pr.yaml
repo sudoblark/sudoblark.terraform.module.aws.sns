@@ -8,6 +8,9 @@ env:
   REPO_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   # Explicitly provided token in ORG to access entire organisation
   ORG_GITHUB_TOKEN: ${{ secrets.SUDOBLARK_GITHUB_TOKEN }}
+  # Variables to control the matrices that define our CI workflow
+  TERRAFORM_VALIDATE_AND_LINT_FOLDERS: ["./", "./examples/email_and_lambda"]
+  TERRAFORM_PLAN_FOLDERS: ["./examples/email_and_lambda"]
 
 on: [pull_request]
 
@@ -19,7 +22,7 @@ jobs:
   validation:
     strategy:
       matrix:
-        folder: ["./", "./examples/email_and_lambda"]
+        folder: ${{ env.TERRAFORM_VALIDATE_AND_LINT_FOLDERS }}
     name: Terraform validate for ${{ matrix.folder }}
     runs-on: ubuntu-20.04
     steps:
@@ -40,7 +43,7 @@ jobs:
   linting:
     strategy:
       matrix:
-        folder: ["./", "./examples/email_and_lambda"]
+        folder: ${{ env.TERRAFORM_VALIDATE_AND_LINT_FOLDERS }}
     name: Terraform lint for ${{ matrix.folder }}
     runs-on: ubuntu-20.04
     steps:
@@ -58,7 +61,7 @@ jobs:
   plan:
     strategy:
       matrix:
-        folder: ["./examples/email_and_lambda"]
+        folder: ${{ env.TERRAFORM_PLAN_FOLDERS }}
     name: Terraform plan for ${{ matrix.folder }}
     runs-on: ubuntu-20.04
     needs: [validation, linting]
