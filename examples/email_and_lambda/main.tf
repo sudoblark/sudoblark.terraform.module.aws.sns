@@ -13,7 +13,7 @@ provider "aws" {
 }
 
 module "sns" {
-  source = "github.com/sudoblark/sudoblark.terraform.module.aws.sns?ref=1.0.2"
+  source = "github.com/sudoblark/sudoblark.terraform.module.aws.sns?ref=1.0.3"
 
   application_name = var.application_name
   environment      = var.environment

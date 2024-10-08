@@ -24,6 +24,13 @@ REQUIRED
 ---------
 - suffix                : Suffix for the topic, will also be used as a unified index for Terraform resources.
 
+- subscriptions          : A list of dictionaries, where each dictionary defines:
+-- endpoint             : Actual endpoint to deliver to, see constraints for more information.
+-- name                 : Friendly name for the endpoint, used for unique indexing in Terraform.
+-- protocol             : Determines the subscription type, permissible types are: email, lambda
+
+OPTIONAL
+---------
 - iam_policy_statements : A list of dictionaries where each dictionary is an IAM statement defining topic policy permissions.
 -- Each dictionary in this list must define the following attributes:
 --- sid: Friendly name for the policy, no spaces or special characters allowed
@@ -36,11 +43,6 @@ REQUIRED
 --- principals    : An list of dictionaries, which each defines:
 ---- type         : A string defining what type the principle(s) is/are
 ---- identifiers  : A list of strings, where each string is an allowed principle
-
-- subscriptions          : A list of dictionaries, where each dictionary defines:
--- endpoint             : Actual endpoint to deliver to, see constraints for more information.
--- name                 : Friendly name for the endpoint, used for unique indexing in Terraform.
--- protocol             : Determines the subscription type, permissible types are: email, lambda
 
 Constraints
 ---------
