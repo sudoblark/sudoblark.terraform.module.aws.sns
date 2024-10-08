@@ -32,6 +32,7 @@ REQUIRED
 OPTIONAL
 ---------
 - iam_policy_statements : A list of dictionaries where each dictionary is an IAM statement defining topic policy permissions.
+                          Defaults to an empty list.
 -- Each dictionary in this list must define the following attributes:
 --- sid: Friendly name for the policy, no spaces or special characters allowed
 --- actions: A list of IAM actions the state machine is allowed to perform
@@ -57,7 +58,7 @@ EOF
   type = list(
     object({
       suffix = string,
-      iam_policy_statements = list(
+      iam_policy_statements = optional(list(
         object({
           sid       = string,
           actions   = list(string),
@@ -76,7 +77,7 @@ EOF
             })
           )
         })
-      ),
+      ), []),
       subscriptions = list(
         object({
           endpoint : string,
