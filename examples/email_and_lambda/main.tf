@@ -2,7 +2,7 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 4.63.0"
+      version = ">= 5.61.0"
     }
   }
   required_version = "~> 1.5.0"
@@ -13,7 +13,7 @@ provider "aws" {
 }
 
 module "sns" {
-  source = "github.com/sudoblark/sudoblark.terraform.module.aws.sns?ref=1.0.0"
+  source = "github.com/sudoblark/sudoblark.terraform.module.aws.sns?ref=1.0.2"
 
   application_name = var.application_name
   environment      = var.environment
