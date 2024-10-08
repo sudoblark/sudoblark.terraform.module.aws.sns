@@ -1,9 +1,19 @@
+locals {
+  actual_policies = flatten([
+    for topic in var.raw_sns_topics : {
+      arn    = aws_sns_topic.topics[topic.suffix].arn
+      policy = data.aws_iam_policy_document.topic_policies[topic.suffix].json
+      suffix = topic.suffix
+    } if length(topic.iam_policy_statements) > 0
+  ])
+}
+
 resource "aws_sns_topic_policy" "policy" {
-  for_each = { for topic in var.raw_sns_topics : topic.suffix => topic }
+  for_each = { for topic in local.actual_policies : topic.suffix => topic }
 
-  arn = aws_sns_topic.topics[each.value["suffix"]].arn
+  arn = each.value["arn"]
 
-  policy = data.aws_iam_policy_document.topic_policies[each.value["suffix"]].json
+  policy = each.value["policy"]
 
   depends_on = [
     data.aws_iam_policy_document.topic_policies,
