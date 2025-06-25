@@ -1,4 +1,9 @@
 # sudoblark.terraform.module.aws.sns
+[![CI](https://github.com/sudoblark/sudoblark.terraform.module.aws.sns/actions/workflows/commit-to-pr.yaml/badge.svg)](https://github.com/sudoblark/sudoblark.terraform.module.aws.sns/actions/workflows/commit-to-pr.yaml)
+[![Terraform Version](https://img.shields.io/badge/Terraform-1.7%2B-blueviolet?logo=terraform)](https://developer.hashicorp.com/terraform/)
+[![Registry](https://img.shields.io/badge/registry-pending-lightgrey)](https://registry.terraform.io/)
+[![License](https://img.shields.io/github/license/sudoblark/sudoblark.terraform.module.aws.sns)](https://github.com/sudoblark/sudoblark.terraform.module.aws.sns/blob/main/LICENSE.txt)
+
 Terraform module to create N number of SNS topics with appropriate subscriptions. - repo managed by sudoblark.terraform.github
 
 ## Developer documentation
